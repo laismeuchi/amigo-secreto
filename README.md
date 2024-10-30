@@ -44,7 +44,7 @@ Como o número de participantes é pequeno essa solução atende, mas em casos d
 
 ### Envio das mensagens 
 
-Pensando na simplicidade, resolvi utilizar a opção de [Click to Chat](https://faq.whatsapp.com/5913398998672934/?helpref=uf_share) do WhatsApp em que é possivel enviar uma mensagem para um número diretamente do navegador.
+Pensando na simplicidade, resolvi utilizar a opção de [Click to Chat](https://faq.whatsapp.com/5913398998672934/?helpref=uf_share) do WhatsApp em que é possível enviar uma mensagem para um número diretamente do navegador.
 Foi então que encontrei a biblioteca [pywhatkit](https://pypi.org/project/pywhatkit/) que faz o encapsulamento de toda a parte de abrir o navegador e utilizar o *Click to Chat* e fechar a aba.
 
 A função _sendwhatmsg_instantly_ faz o envio da mensagem instaneamente para o telefone indicado. O parâmetro _wait_time_ especifica o tempo em segundos que a mensagem será enviada após a abertura do navegador e o _tab_close=True_ fecha a aba depois que enviar a mensagem.
