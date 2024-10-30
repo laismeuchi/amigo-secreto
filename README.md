@@ -40,6 +40,11 @@ def assign_secret_friends(participants):
         logging.info("Tivemos pessoas tirando ela mesma.. refazendo o sorteio")
 ```
 
+Este foi o exemplo de um resultado de sorteio:
+
+![Screenshot 2024-10-30 190342](https://github.com/user-attachments/assets/dcd4b311-4aba-4848-bb8b-fcaf00071290)
+
+
 Como o número de participantes é pequeno essa solução atende, mas em casos de muitos participantes essa seria uma parte do código a ser ajustada para melhor desempenho.
 
 ### Envio das mensagens 
