@@ -80,6 +80,9 @@ def send_messages(df_drawn):
 
 Aqui deixo um vídeo de demonstração da execução do sorteio e envio de mensagens:
 
+[![Demonstração](https://img.youtube.com/vi/SRuPT3GjgVg/0.jpg)](https://www.youtube.com/watch?v=SRuPT3GjgVg)
+
+
 
 ## *_Disclaimer_*
 
