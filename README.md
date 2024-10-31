@@ -26,7 +26,7 @@ O sorteio é realizado com base na planilha preenchida com Nome, Telefone e Cida
 ![Screenshot 2024-10-30 174740](https://github.com/user-attachments/assets/00ee603f-fc46-48d7-b18e-4aa036e0b56a)
 
 
-A planilha é lida para um _dataframe_ do [Pandas](https://pandas.pydata.org/). É feita uma cópia desse _dataframe_ em que é aplicado a função _suffle_ da biblioteca [_random_](https://docs.python.org/3/library/random.html) que embralha a lista de participantes.
+A planilha é lida para um _dataframe_ do [Pandas](https://pandas.pydata.org/). É feita uma cópia desse _dataframe_ em que é aplicado a função _shuffle_ da biblioteca [_random_](https://docs.python.org/3/library/random.html) que embralha a lista de participantes.
 Também é realizada uma validação para ver se algum participante tirou ele mesmo e se esse for o caso, é realizado um novo sorteio até que não tenha esses casos.
 
 ``` python
