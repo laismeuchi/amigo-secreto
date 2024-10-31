@@ -6,7 +6,7 @@ Projeto para sorteio de Amigo Secreto e envio dos resultados por WhatsApp.
 
 Minha mãe tem um viveiro onde ela vende vários tipos de plantas, desde flores até árvores frutíferas.
 
-Ao longo dos anos ela consegui clientes em várias cidades da região e a venda realizada para esses clientes é realizada por WhatsApp e depois, 1 vez por mês, meu pai vai até essas cidades fazer as entregas aos clientes.
+Ao longo dos anos ela consegui clientes em várias cidades da região e a venda para esses clientes é realizada por WhatsApp e depois, 1 vez por mês, meu pai vai até essas cidades fazer as entregas aos clientes.
 
 Também existe um grupo de WhatsApp em que os clientes que participam podem acompanhar os produtos disponíveis, além de trocar experiência sobre cultivos e cuidados com suas plantas.
 
