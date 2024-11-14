@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def read_participants(file_path):
+def read_xlsx_file(file_path):
     return pd.read_excel(file_path)
 
 
@@ -28,22 +28,29 @@ def send_messages(df_drawn):
         friend_city = df_drawn['Amigo Secreto Cidade'][index]
 
         message = f"""Olá *{participant_name}*!
-        Chegou o resultado do sorteio de *Amigo Secreto das Flores* 💐🌷🌿
-        Seu amigo(a) secreto é
-        .
-        .
-        .
-        .
-        .
-        *{friend_name}* que mora em *{friend_city}*
-        """
+Chegou o resultado do sorteio de *Amigo Secreto Minha Flor!* 💐🌷🪻🪴
+Seu amigo(a) secreto é
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+*{friend_name}* 
+que mora em *{friend_city}*
+"""
         logging.info(f"Enviando mensagem para {participant_phone}")
-        pywhatkit.sendwhatmsg_instantly(participant_phone, message, wait_time=15, tab_close=True)
+        # teste = '+5565996798844'
+        pywhatkit.sendwhatmsg_instantly(participant_phone, message, wait_time=20, tab_close=True)
 
 
 if __name__ == '__main__':
     logging.info("Iniciando script...")
-    df_participants = read_participants('Amigo Secreto do Viveiro.xlsx')
+    df_participants = read_xlsx_file('Amigo Secreto do Viveiro.xlsx')
 
     logging.info("Iniciando sorteio...")
     participants = df_participants.to_dict('records')
@@ -62,6 +69,8 @@ if __name__ == '__main__':
     output_file = 'Amigo Secreto do Viveiro - Resultado.xlsx'
     df_drawn.to_excel(output_file, index=False)
 
+    df_results = read_xlsx_file('Amigo Secreto do Viveiro - Resultado.xlsx')
+
     logging.info("Enviando mensagens...")
-    send_messages(df_drawn)
+    send_messages(df_results)
     logging.info("Mensagens enviadas.")
