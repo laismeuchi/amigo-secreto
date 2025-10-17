@@ -3,7 +3,7 @@ import pywhatkit
 import pandas as pd
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def read_xlsx_file(file_path):
@@ -50,7 +50,7 @@ que mora em *{friend_city}*
 
 if __name__ == '__main__':
     logging.info("Iniciando script...")
-    df_participants = read_xlsx_file('Amigo Secreto do Viveiro.xlsx')
+    df_participants = read_xlsx_file('bases/Amigo Secreto do Viveiro_2025.xlsx')
 
     logging.info("Iniciando sorteio...")
     participants = df_participants.to_dict('records')
@@ -66,11 +66,12 @@ if __name__ == '__main__':
         'Amigo Secreto Cidade': [d['Cidade'] for d in drawn],
     })
 
-    output_file = 'Amigo Secreto do Viveiro - Resultado.xlsx'
+    output_file = 'bases/Amigo Secreto do Viveiro - Resultado_2025.xlsx'
     df_drawn.to_excel(output_file, index=False)
 
-    df_results = read_xlsx_file('Amigo Secreto do Viveiro - Resultado.xlsx')
+    df_results = read_xlsx_file('bases/Amigo Secreto do Viveiro - Resultado_2025.xlsx')
 
     logging.info("Enviando mensagens...")
-    send_messages(df_results)
+    # send_messages(df_results)
     logging.info("Mensagens enviadas.")
+
