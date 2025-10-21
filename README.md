@@ -77,7 +77,7 @@ def send_messages(df_drawn):
 ```
 ### Nova Versão — Cartas Anônimas
 
-Este ano, decidi tornar a experiência mais interativa, adicionando um recurso que permite aos participantes **enviar cartas anônimas** para seus respectivos amigos secretos.  
+Este ano, decidi tornar a experiência mais interativa, adicionando um recurso que permite aos participantes **enviar cartas anônimas** entre eles. 
 Como os usuários não têm familiaridade com tecnologia, o foco novamente foi na **simplicidade**:
 
 - O **Google Forms** foi utilizado para coletar as mensagens — sem necessidade de login, fácil de usar, e as respostas são armazenadas automaticamente em **Google Sheets**.  
