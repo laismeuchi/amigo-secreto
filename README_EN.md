@@ -80,6 +80,7 @@ def send_messages(df_drawn):
 This year, I decided to make the experience more interactive by adding a new feature that allows participants to send anonymous messages to each other.
 Because the users are not familiar with technology, I focused again on simplicity:
 - Google Forms was used to collect the messages — no login required, easy to use, and responses are automatically stored in Google Sheets.
+- The user chooses from a list of participants who will receive the message and types the message, which can include paragraphs and even emojis.
 - The script reads new letters from the sheet using [gspread](https://pypi.org/project/gspread/).
 - Each message is sent through WhatsApp Web using [Selenium](https://www.selenium.dev/).
 - After sending, the message is marked as delivered in the sheet.
