@@ -77,7 +77,7 @@ def send_messages(df_drawn):
 
 ## New Version — Anonymous Letters
 
-This year, I decided to make the experience more interactive by adding a new feature that allows participants to send anonymous letters to their gift recipients.
+This year, I decided to make the experience more interactive by adding a new feature that allows participants to send anonymous messages to each other.
 Because the users are not familiar with technology, I focused again on simplicity:
 - Google Forms was used to collect the messages — no login required, easy to use, and responses are automatically stored in Google Sheets.
 - The script reads new letters from the sheet using [gspread](https://pypi.org/project/gspread/).
