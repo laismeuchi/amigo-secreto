@@ -46,7 +46,7 @@ This was an example of a draw result:
 
 As the number of participants is small, this solution meets the needs, but in cases of many participants this would be a part of the code that needs to be adjusted for better performance.
 
-### Messaging 
+### Messaging (pywhatkit)
 
 Thinking about simplicity, I decided to use WhatsApp's [Click to Chat](https://faq.whatsapp.com/5913398998672934/?helpref=uf_share) option, where you can send a message to a number directly from the browser.
 It was then that I found the library [pywhatkit](https://pypi.org/project/pywhatkit/) that encapsulates the whole part of opening the browser and using *Click to Chat* and closing the tab.
@@ -62,7 +62,7 @@ def send_messages(df_drawn):
         friend_city = df_drawn['Amigo Secreto Cidade'][index]
 
         message = f"""Olá *{participant_name}*!
-        Chegou o resultado do sorteio de *Amigo Secreto das Flores* 💐🌷🌿
+        Chegou o resultado do sorteio de *Amigo Secreto 2025* 💐🌷🌿
         Seu amigo(a) secreto é
         .
         .
@@ -75,11 +75,45 @@ def send_messages(df_drawn):
         pywhatkit.sendwhatmsg_instantly(participant_phone, message, wait_time=15, tab_close=True)
 ```
 
-### Demo
+## New Version — Anonymous Letters
+
+This year, I decided to make the experience more interactive by adding a new feature that allows participants to send anonymous letters to their gift recipients.
+Because the users are not familiar with technology, I focused again on simplicity:
+- Google Forms was used to collect the messages — no login required, easy to use, and responses are automatically stored in Google Sheets.
+- The script reads new letters from the sheet using [gspread](https://pypi.org/project/gspread/)
+- Each message is sent through WhatsApp Web using [Selenium](https://www.selenium.dev/)
+- After sending, the message is marked as delivered in the sheet.
+
+The process is scheduled to run every 15 minutes, checking for new messages to send.
+
+``` python
+def send_messages(driver, df_letter):
+    for index in df_letter.index:
+        to_phone = '+55' + df_letter['Telefone'][index]
+        to_name = df_letter['Nome'][index]
+        letter = df_letter['Mensagem'][index]
+        message = f"""Olá *{to_name}*!
+Chegou uma cartinha anônima do *Amigo Secreto 2025!* 💐🌷🪻🪴
+Veja o texto abaixo 💌:
+{letter}"""
+        whatsapp_url = generate_link(to_phone, message)
+        driver.get(whatsapp_url)
+        sleep(5)
+        msg_box = WebDriverWait(driver, 45).until(
+            EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"][@data-tab="10"]'))
+        )
+        msg_box.send_keys(" ")
+        msg_box.send_keys(Keys.ENTER)
+
+```
+
+This approach gives more control and reliability than pywhatkit, while keeping the process simple and automated.
+
+<!-- ### Demo
 
 Here is a video demonstrating how the draw is carried out and messages are sent: 
 
-[![Demo](https://img.youtube.com/vi/SRuPT3GjgVg/0.jpg)](https://www.youtube.com/watch?v=SRuPT3GjgVg)
+[![Demo](https://img.youtube.com/vi/SRuPT3GjgVg/0.jpg)](https://www.youtube.com/watch?v=SRuPT3GjgVg) -->
 
 
 ## *_Disclaimer_*
