@@ -80,7 +80,8 @@ def send_messages(df_drawn):
 Este ano, decidi tornar a experiência mais interativa, adicionando um recurso que permite aos participantes **enviar cartas anônimas** entre eles. 
 Como os usuários não têm familiaridade com tecnologia, o foco novamente foi na **simplicidade**:
 
-- O **Google Forms** foi utilizado para coletar as mensagens — sem necessidade de login, fácil de usar, e as respostas são armazenadas automaticamente em **Google Sheets**.  
+- O **Google Forms** foi utilizado para coletar as mensagens — sem necessidade de login, fácil de usar, e as respostas são armazenadas automaticamente em **Google Sheets**.
+- O usuário escolhe dentre uma lista dos participantes para quem a mensagem vai ser enviada e digita a mensagem que pode conter parágrafos e até emojis.
 - O script lê as novas cartas da planilha usando a biblioteca [gspread](https://pypi.org/project/gspread/).
 - Cada mensagem é enviada pelo **WhatsApp Web** utilizando [Selenium](https://www.selenium.dev/).
 - Após o envio, a mensagem é marcada como entregue na planilha.
