@@ -143,7 +143,7 @@ if __name__ == '__main__':
         WebDriverWait(driver, 85).until(
             EC.presence_of_element_located((By.ID, "pane-side"))
         )
-        logging.info("WhatsApp Web fully loaded.")
+        logging.info("WhatsApp Web fully loaded...")
 
         # Send messages
         send_messages(driver, df_letters)
@@ -152,4 +152,4 @@ if __name__ == '__main__':
         driver.quit()
 
     else:
-        logging.info("There are no messages to be sent.")
+        logging.info("There are no messages to be sent...")
