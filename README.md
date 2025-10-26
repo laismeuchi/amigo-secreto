@@ -75,14 +75,48 @@ def send_messages(df_drawn):
         logging.info(f"Enviando mensagem para {participant_phone}")
         pywhatkit.sendwhatmsg_instantly(participant_phone, message, wait_time=15, tab_close=True)
 ```
+### Nova Versão — Cartas Anônimas
 
-### Demonstração
+Este ano, decidi tornar a experiência mais interativa, adicionando um recurso que permite aos participantes **enviar cartas anônimas** entre eles. 
+Como os usuários não têm familiaridade com tecnologia, o foco novamente foi na **simplicidade**:
+
+- O **Google Forms** foi utilizado para coletar as mensagens — sem necessidade de login, fácil de usar, e as respostas são armazenadas automaticamente em **Google Sheets**.
+- O usuário escolhe dentre uma lista dos participantes para quem a mensagem vai ser enviada e digita a mensagem que pode conter parágrafos e até emojis.
+- O script lê as novas cartas da planilha usando a biblioteca [gspread](https://pypi.org/project/gspread/).
+- Cada mensagem é enviada pelo **WhatsApp Web** utilizando [Selenium](https://www.selenium.dev/).
+- Após o envio, a mensagem é marcada como entregue na planilha.
+  
+O processo está programado para rodar a cada 15 minutos, verificando se há novas mensagens para enviar.
+
+``` python
+def send_messages(driver, df_letter):
+    for index in df_letter.index:
+        to_phone = '+55' + df_letter['Telefone'][index]
+        to_name = df_letter['Nome'][index]
+        letter = df_letter['Mensagem'][index]
+        message = f"""Olá *{to_name}*!
+Chegou uma cartinha anônima do *Amigo Secreto 2025!* 💐🌷🪻🪴
+Veja o texto abaixo 💌:
+{letter}"""
+        whatsapp_url = generate_link(to_phone, message)
+        driver.get(whatsapp_url)
+        sleep(5)
+        msg_box = WebDriverWait(driver, 45).until(
+            EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"][@data-tab="10"]'))
+        )
+        msg_box.send_keys(" ")
+        msg_box.send_keys(Keys.ENTER)
+
+```
+Esta abordagem oferece mais controle e confiabilidade do que o pywhatkit, mantendo o processo simples e automatizado.
+
+<!-- ### Demonstração
 
 Aqui deixo um vídeo de demonstração da execução do sorteio e envio de mensagens:
 
 [![Demonstração](https://img.youtube.com/vi/SRuPT3GjgVg/0.jpg)](https://www.youtube.com/watch?v=SRuPT3GjgVg)
 
-
+-->
 
 ## *_Disclaimer_*
 
