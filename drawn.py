@@ -52,6 +52,7 @@ if __name__ == '__main__':
     logging.info("Iniciando script...")
     df_participants = read_xlsx_file('bases/Amigo Secreto do Viveiro_2025.xlsx')
 
+
     logging.info("Iniciando sorteio...")
     participants = df_participants.to_dict('records')
     drawn = assign_secret_friends(participants)
